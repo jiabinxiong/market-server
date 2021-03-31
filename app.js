@@ -17,6 +17,11 @@ app.use('/public', express.static(path.join(__dirname, './static')));
 const userManagementLoginRouter = require('./router/user/management/user.router');
 app.use('/api/user/management', userManagementLoginRouter);
 
+//需要验证
+const { marketManagementRouter } = require('./router');
+app.use('/api/management', verifyToken, marketManagementRouter);
+
+
 
 //公共
 const provinceRouter = require('./router/common/administrations/province.router');

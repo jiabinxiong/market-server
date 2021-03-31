@@ -5,7 +5,7 @@ const { createToken } = require('../../../verify/verifyToken');
 exports.login = async(req, res) => {
     const { error } = userManagementLoginValidation(req.body);
     if(error) {
-        return res.status(200).send({
+        return res.status(500).send({
             code: 1,
             msg: error.details[0].message
         });
@@ -22,7 +22,8 @@ exports.login = async(req, res) => {
         });
     }
 
-    return res.status(200).send({
+    const token = createToken({name: req.body.name});
+    res.header('Authorization', token).send({
         code: 0,
         msg: 'ok',
         token: createToken({
