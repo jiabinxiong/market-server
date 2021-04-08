@@ -7,21 +7,38 @@ const newMarketManagementSchema = new mongoose.Schema({
         min: 1,
         max: 200
     },
-    province: [
-        { 
-            type: String,
-            required: true    
-        }
-    ],
-    cover: {
-        type: String,
-        min: 1,
-        max: 1000
+    administration: {
+        // province: {
+        //     type: String,
+        //     required: true
+        // },
+        // city: {
+        //     type: String,
+        //     required: true
+        // },
+        // county: {
+        //     type: String,
+        //     required: true
+        // }
     },
+    cover: [
+        // {
+        //     type: String,
+        //     required: true
+        // }
+    ],
     summary: {
         type: String,
         min: 1,
         max: 1000
+    },
+    address: {
+        text: {
+            type: String,
+        },
+        lnglat: {
+            type: String
+        }
     },
     hangOut: {
         type: String,
@@ -53,11 +70,7 @@ const newMarketManagementSchema = new mongoose.Schema({
         min: 1,
         max: 1000
     },
-    address: {
-        type: String,
-        min: 1,
-        max: 1000
-    },
+
     date: {
         type: Date,
         default: Date.now

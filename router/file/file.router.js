@@ -43,7 +43,8 @@ const upload = multer({
 }).single('market');
 
 router.post('/upload', (req, res, next) => {
-    upload(req, res, (err) => {                
+    upload(req, res, (err) => {        
+        console.log(err);        
         if(err !== undefined) {
             if(err.message === 'File too large') {
                 res.status(200).send({
@@ -59,7 +60,8 @@ router.post('/upload', (req, res, next) => {
         } else {
             res.status(200).send({
                 code: 0,
-                msg: 'ok'
+                msg: 'ok',
+                url: `/public/images/${req.file.filename}`
             });
         }
     })

@@ -3,6 +3,7 @@ const { newMarketConstant } = require('../../../constants');
 
 exports.newMarket = async (req, res) => {
     try {
+    
         await new NewMarketManagement({
             ...newMarketConstant,
             ...req.body
@@ -137,11 +138,11 @@ exports.deleteMarket = async(req, res) => {
 }
 
 exports.updateMarket = (req, res) => {
+    // console.log(req.body);
+    const {_id, ...deleteBody} = req.body;
+
     try{
-        NewMarketManagement.findByIdAndUpdate('6060a54be21b3e1666bd4488', {
-            ...newMarketConstant,
-            name: 'xiong update',
-        }).then(data => {
+        NewMarketManagement.findByIdAndUpdate(_id, deleteBody).then(data => {
             return res.status(200).send({
                 code: 0,
                 msg: 'ok',

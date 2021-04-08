@@ -1,7 +1,11 @@
 const newMarketConstant = {
     name: '',
-    province: [],
-    cover: '',
+    administration: {
+        province: {},
+        city: {},
+        county: {}
+    },
+    cover: [],
     summary: '',
     hangOut: '',
     bus: '',
