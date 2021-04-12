@@ -38,7 +38,11 @@ exports.queryMarket = async(req, res) => {
 
     try{
         const count = await NewMarketManagement.estimatedDocumentCount();
-        await NewMarketManagement.find().sort({_id: -1}).limit(Number(size)).skip(Number((page-1)*size))
+        await NewMarketManagement.find({
+            'administration.province.code': {
+                $eq: req.query.province
+            } 
+        }).sort({_id: -1}).limit(Number(size)).skip(Number((page-1)*size))
             .then(data => {
                 return res.status(200).send({
                     code: 0,

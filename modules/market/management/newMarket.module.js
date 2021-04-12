@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 
 const newMarketManagementSchema = new mongoose.Schema({
+    logo: {
+        type: String,
+    },
     name: {
         type: String,
         required: true,
